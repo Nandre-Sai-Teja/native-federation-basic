@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,17 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'shell';
+  ngOnInit(): void {
+    localStorage.setItem('test', 'asadw')
+  }
+
+  handleInput(event: Event) {
+    const value = (event.target as HTMLInputElement)?.value
+    if (value) {
+      console.log('value', value);
+      localStorage.setItem('value', value)
+    }
+  }
 }
